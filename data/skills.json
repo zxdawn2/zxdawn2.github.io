@@ -1,0 +1,18 @@
+[
+  {
+      "grouping":"Programming",
+      "skills":["Python", "Bash", "Git","Fortran","C"]
+  },
+  {
+      "grouping":"Modeling & Remote Sensing",
+      "skills":[
+          {"name":"WRF-Chem","link":"https://github.com/wrf-model/WRF"},
+          {"name":"Tropospheric NO2 from satellites","link":"http://www.temis.nl/airpollution/no2.html"},
+          {"name":"FY4A","link":"https://github.com/zxdawn/FY-4"}
+      ]
+  },
+  {
+    "grouping":"Typesetting",
+      "skills":["LaTeX", "Markdawn"]
+  }
+]

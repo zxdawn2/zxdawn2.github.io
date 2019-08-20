@@ -1,0 +1,141 @@
+baseURL                    = "https://zxdawn2.github.io/"
+builddrafts                = false
+languageCode               = "zh-Hans"
+canonifyurls               = true
+contentdir                 = "content"
+layoutdir                  = "layouts"
+publishdir                 = "public"
+enableEmoji                = true
+hasCJKLanguage             = true
+summaryLength              = 200
+Paginate                   = 5
+
+#theme                      = "AllinOne"
+theme                      = ["AllinOne", "resume"]
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]
+section = [ "HTML", "RSS"]
+taxonomy = [ "HTML", "RSS"]
+
+[outputFormats.resume]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+title                      = "Dreambooker"
+
+pygmentsuseclasses         = true
+disablePathToLower         = true 
+
+[permalinks]
+sci-tech                 = ":year/:month/:day/:slug/"
+essay                     = ":year/:month/:day/:slug/"
+
+[taxonomies]
+  tag                      = "tags"
+  series                   = "series"
+  category                 = "categories"
+
+
+[menu]
+  [[menu.main]]
+    name                   = "Sci-Tech"
+    weight                 = 1
+    identifier             = "sci-tech"
+    url                    = "sci-tech/"
+
+  #[[menu.main]]
+   # name                   = "Blog"
+   # weight                 = 3
+   # identifier             = "blog"
+   # url                    = "blog/"
+
+  [[menu.main]]
+    name                   = "Essay"
+    weight                 = 3
+    identifier             = "essay"
+    url                    = "essay/"
+
+  [[menu.main]]
+    name                   = "About"
+    weight                 = 9
+    identifier             = "about"
+    url                    = "about/"
+
+[params]
+  faviconfile              = "img/logo.jpg"
+  avatar                   = "img/me.jpg"             # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+  author                   = "Xin Zhang"
+  description              = ["Life is a dream,", "Dream is a life."]           # appears in the site header when set to a non-empty string
+  welcome_head             = "Hello, Dreambooker!"
+  welcome_word             = "~ Chase your dream ~"
+
+  latestpostscount         = 5                             # how many posts to display on the home page
+  bloggroupby              = 'month'
+  dateform                 = "Jan 2, 2006"
+  dateformfull             = "2006-01-02  Monday  15:04:05"
+  noshowreadtime           = false
+
+  # slides
+  slidesDirPath            = "static/img/header-slides"    # path to image in local dir (for hugo)
+  slidesDirPathURL         = "img/header-slides"    # path to image in static dir (for static pages)
+
+  # highlighting 
+  highlightjs              = true
+
+  # links
+  email                    = "xinzhang1215@gmail.com"
+  github                   = "//github.com/zxdawn"
+  twitter                  = "//twitter.com/zhangxin_dawn"
+  instagram                = "//instagram.com/zhangxin_dawn/"
+  include_rss              = true                         # include RSS <link> tag in <head> and show RSS icon
+
+
+  # analytics
+  # googleAnalytics          = "UA-90057853-1"
+
+  # counter
+  busuanzi                 = true
+
+  firstName = "Xin"
+  lastName = "Zhang"
+  address = "Nanjing, CN"
+  phone = "+86 15895938361"
+  contactNote = "Mr."
+  profileImage = "img/portrait.jpg"
+  favicon = "images/favicon.ico"
+
+  showSkills = true
+  showProjects = false
+  showOpenSource = true
+  showPublications = true
+  showExperience = false
+  showEducation = true
+  showQr = true
+
+[params.staticman]
+  username = "zxdawn2"
+  repository = "zxdawn2.github.io"
+  branch = "source"
+  notifications = true
+
+[[params.handles]]
+    name = "GitHub"
+    link = "https://github.com/zxdawn/"
+
+[[params.handles]]
+    name = "Twitter"
+    link = "https://twitter.com/zhangxin_dawn/"
+
+[[params.handles]]
+    name = "Youtube"
+    link = "https://www.youtube.com/channel/UC2y2YOGOWZXmOKzR1h_8wGw"
+
+[[params.handles]]
+    name = "Instagram"
+    link = "https://www.instagram.com/zhangxin_dawn/"
+
+[[params.handles]]
+    name = "Facebook"
+    link = "https://www.facebook.com/zxdawn"
