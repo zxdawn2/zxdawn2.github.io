@@ -1,0 +1,77 @@
+
+<div id="comment-form">
+  <h3 id="comment-form-header">Say something</h3>
+  <form method="POST" action="https://staticman3.herokuapp.com/v3/entry/github/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/{{ .Site.Params.staticman.branch }}/comments">
+    <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
+    <input type="hidden" name="options[redirectError]" value="{{ .Permalink }}#comment-error">
+    <input type="hidden" name="options[slug]" value="{{ .File.ContentBaseName  }}">
+    <input type="hidden" name="options[section]" value="{{ .Section }}">
+    <input type="hidden" name="options[origin]" value="{{ .Permalink }}">
+    <input type="hidden" name="options[parent]" value="{{ .File.ContentBaseName }}">
+    <input type="hidden" name="fields[reply_to]" value="">
+    <input type="address" name="fields[botpot]" placeholder="botpot (do not fill!)" style="display:none">
+    {{ if isset .Site.Params.staticman "recaptcha" }}
+    <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ .Site.Params.recaptcha.siteKey }}">
+    <input type="hidden" name="options[reCaptcha][secret]" value="{{ .Site.Params.recaptcha.secret }}">
+    {{ end }}
+
+    <fieldset>
+      <input name="fields[name]" type="text" placeholder="Your name">
+    </fieldset>
+
+    <fieldset>
+      <input name="fields[email]" type="email" placeholder="Your email address">
+    </fieldset>
+
+    <fieldset>
+      <textarea name="fields[body]" placeholder="You can use Markdown syntax" rows="10"></textarea>
+    </fieldset>
+
+<!--     {{ if .Site.Params.staticman.notifications }}
+    <fieldset>
+      <div>
+        <input type="checkbox" name="options[subscribe]" value="email">
+        Send me an email when someone comments on this post.
+      </div>
+    </fieldset>
+    {{ end }} -->
+
+    <fieldset>
+      {{ if isset .Site.Params.staticman "recaptcha" }}
+      <div class="g-recaptcha" data-sitekey="{{ .Site.Params.recaptcha.siteKey }}" data-callback="enableBtn"></div>
+      {{ end }}
+
+      <input type="submit" value="Submit" id="submit-button" class="right">
+      <input type="reset" value="Reset" class="right">
+    </fieldset>
+
+  </form>
+</div>
+
+{{ if isset .Site.Params.staticman "recaptcha" }}
+<script async src='https://www.google.com/recaptcha/api.js' ></script>
+
+<script type="text/javascript">
+  document.getElementById("submit-button").disabled = true;
+</script>
+
+<script type="text/javascript">
+  function enableBtn(){
+    document.getElementById("submit-button").disabled = false;
+  }
+</script>
+{{ end }}
+
+<div id="comment-submitted" class="dialog">
+  <h3>Thank you</h3>
+  <p>Your comment has been submitted and will be published once it has been approved.</p>
+  {{ if (.Site.Params.githubPullURL) }}
+    <p><a href="https://github.com/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/pulls">Click here</a> to see the pull request you generated.</p>
+  {{ end }}
+</div>
+
+<div id="comment-error" class="dialog">
+  <h3>OOPS!</h3>
+  <p>Your comment has not been submitted. Please <a href="{{ .Permalink }}">go back</a> and try again. Thank You!</p>
+  <p>If this error persists, please open an issue by <a href="https://github.com/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/issues"> clicking here</a>.</p>
+</div>

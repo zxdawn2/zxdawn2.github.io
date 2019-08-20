@@ -1,0 +1,40 @@
+{{ define "main" }}
+   {{ partial "about.html" .}}
+   {{ if .Site.Params.showSkills }}
+       {{ partial "portfolio/skills.html" . }}
+   {{ end }}
+   {{ if .Site.Params.showProjects }}
+      {{ with .Site.GetPage "section" "/about/projects/creations" }}
+         {{ .Scratch.Set "sectionId" "projects" }}
+         {{ .Scratch.Set "subsectionId" "projects" }}
+         {{ partial "subsection.html" . }}
+      {{ end }}
+   {{ end }}
+   {{ if .Site.Params.showOpenSource }}
+      {{ with .Site.GetPage "section" "/about/projects/contributions" }}
+         {{ .Scratch.Set "sectionId" "projects" }}
+         {{ .Scratch.Set "subsectionId" "open" }}
+         {{ partial "subsection.html" . }}
+      {{ end }}
+   {{ end }}
+   {{ if .Site.Params.showPublications }}
+      {{ with .Site.GetPage "/about/publications" }}
+         {{ .Scratch.Set "sectionId" "publications" }}
+         {{ .Scratch.Set "subsectionId" "publications" }}
+         {{ partial "subsection.html" . }}
+      {{ end }}   
+   {{ end }}
+   {{ if .Site.Params.showExperience }}
+       {{ partial "portfolio/experience.html" . }}
+   {{ end }}
+   {{ if .Site.Params.showEducation }}
+       {{ partial "portfolio/education.html" . }}
+   {{ end }}
+   {{ if .Site.Params.showBlog }}
+      {{ with .Site.GetPage "section" "blog" }}
+         {{ .Scratch.Set "sectionId" "blog" }}
+         {{ .Scratch.Set "subsectionId" "blog" }}
+         {{ partial "sectionSummary" . }}
+      {{ end }}
+   {{ end }}
+{{ end }}
