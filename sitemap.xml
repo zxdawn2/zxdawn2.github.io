@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/publications/presentations/ppt01/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/behr_lnox/</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/satpy_agri/</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/pyspectral/</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/rm2pdf/</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/hpc/</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/contributions/</loc>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/categories/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/sci-tech/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/tags/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/tags/hugo/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/categories/sci-tech/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/tags/web/</loc>
+    <lastmod>2019-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/essay/</loc>
+    <lastmod>2019-07-08T16:36:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/2019/07/08/test_blog/</loc>
+    <lastmod>2019-07-08T16:36:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/categories/essay/</loc>
+    <lastmod>2019-07-08T16:36:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/tags/test/</loc>
+    <lastmod>2019-07-08T16:36:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/publications/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/</loc>
+    <lastmod>2018-02-10T18:56:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/about/projects/</loc>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://zxdawn2.github.io/series/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sci-teches on </title>
+    <link>https://zxdawn2.github.io/sci-tech/</link>
+    <description>Recent content in Sci-teches on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sat, 17 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zxdawn2.github.io/sci-tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo&#43;Staticman&#43;Travis</title>
+      <link>https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/</guid>
+      <description>&lt;p&gt;This blog post documents the setup of deploying Hugo with Travis CI to the GitHub Pages.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

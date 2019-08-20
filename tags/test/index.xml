@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>test on </title>
+    <link>https://zxdawn2.github.io/tags/test/</link>
+    <description>Recent content in test on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 08 Jul 2019 16:36:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://zxdawn2.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test_blog</title>
+      <link>https://zxdawn2.github.io/2019/07/08/test_blog/</link>
+      <pubDate>Mon, 08 Jul 2019 16:36:48 +0800</pubDate>
+      
+      <guid>https://zxdawn2.github.io/2019/07/08/test_blog/</guid>
+      <description>Simple content.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="Xin Zhang">
+  <meta name="description" content="This blog post documents the setup of deploying Hugo with Travis CI to the GitHub Pages.">
+  
+  <meta property="og:title" content="Hugo&#43;Staticman&#43;Travis" />
+<meta property="og:description" content="This blog post documents the setup of deploying Hugo with Travis CI to the GitHub Pages." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/" />
+<meta property="article:published_time" content="2019-08-17T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-08-17T00:00:00&#43;00:00"/>
+
+
+  <title>
+  
+       Hugo&#43;Staticman&#43;Travis |  
+  
+  </title>
+
+  <link rel="canonical" href="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/">
+
+  
+  
+
+  
+  <link href="https://zxdawn2.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://zxdawn2.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://zxdawn2.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://zxdawn2.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://zxdawn2.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://zxdawn2.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://zxdawn2.github.io/img/logo.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+    
+    <link rel="stylesheet" href="https://zxdawn2.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://zxdawn2.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://zxdawn2.github.io/sci-tech/" >Sci-Tech  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://zxdawn2.github.io/essay/" >Essay  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://zxdawn2.github.io/about/" >About  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://zxdawn2.github.io/img/header-slides/0_sunset.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://zxdawn2.github.io/img/header-slides//1_sunset.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://zxdawn2.github.io/img/header-slides//2_china.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://zxdawn2.github.io/img/header-slides//3_sunset.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://zxdawn2.github.io/img/header-slides//4_vienna.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://zxdawn2.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://zxdawn2.github.io/img/me.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://zxdawn2.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong></strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/zxdawn" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+
+            
+
+            
+
+            
+                <a href="//twitter.com/zhangxin_dawn" target="_blank" rel="noopener"><i class="fab fa-twitter pr-1" aria-hidden="true"></i></a>
+            
+
+            
+                <a href="//instagram.com/zhangxin_dawn/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:xinzhang1215@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+
+  
+  <main class="container">
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://zxdawn2.github.io/categories/sci-tech"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> sci-tech </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">Hugo&#43;Staticman&#43;Travis</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Aug 17, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>6 minutes read</li>
+    
+    
+      <li class="middot"></li>
+      <li><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> page view</span></li>
+    
+  </ul>
+  
+    <div class="view">
+      <img src="https://zxdawn2.github.io/images/sci-tech/2019-08/Hugo_Staticman_Travis_4.png" />
+    </div>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p>This blog post documents the setup of deploying Hugo with Travis CI to the GitHub Pages.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+<li><a href="https://github.com/">GitHub</a> account;</li>
+<li><a href="https://travis-ci.org/">Travis CI</a> account (login with GitHub account);</li>
+<li>Installing <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a>, <a href="https://gohugo.io/getting-started/installing/">hugo</a> on your local system</li>
+</ul>
+
+<h2 id="create-basic-site">Create Basic Site</h2>
+
+<p>Here I want to create a site named <code>demo</code>:</p>
+
+<pre><code>$ hugo new site demo
+</code></pre>
+
+<p>Generated directory structure by Hugo:</p>
+
+<pre><code>└── demo
+    ├── archetypes
+    ├── config.toml
+    ├── content
+    ├── data
+    ├── layouts
+    ├── static
+    └── themes
+</code></pre>
+
+<p>Since I decide to combine the modified <a href="https://github.com/zxdawn/AllinOne">AllinOne</a> and <a href="https://github.com/zxdawn/hugo-resume">hugo-resume</a> theme, I need to clone the two theme first:</p>
+
+<pre><code>$ cd demo/themes
+$ git clone https://github.com/zxdawn/AllinOne_resume.git AllinOne
+$ git clone https://github.com/zxdawn/hugo-resume.git resume
+$ cd ..
+</code></pre>
+
+<p>Then, the configuration file <code>config.toml</code> should be modified. Here&rsquo;s my example:</p>
+
+<pre><code>baseURL                    = &quot;https://zxdawn2.github.io/&quot;
+builddrafts                = false
+languageCode               = &quot;zh-Hans&quot;
+canonifyurls               = true
+contentdir                 = &quot;content&quot;
+layoutdir                  = &quot;layouts&quot;
+publishdir                 = &quot;public&quot;
+enableEmoji                = true
+hasCJKLanguage             = true
+summaryLength              = 200
+Paginate                   = 5
+
+#theme                      = &quot;AllinOne&quot;
+theme                      = [&quot;AllinOne&quot;, &quot;resume&quot;]
+
+[outputs]
+home = [ &quot;HTML&quot;, &quot;RSS&quot;, &quot;JSON&quot; ]
+section = [ &quot;HTML&quot;, &quot;RSS&quot;]
+taxonomy = [ &quot;HTML&quot;, &quot;RSS&quot;]
+
+[outputFormats.resume]
+baseName = &quot;index&quot;
+mediaType = &quot;text/html&quot;
+isHTML = true
+
+title                      = &quot;Dreambooker&quot;
+
+pygmentsuseclasses         = true
+disablePathToLower         = true 
+
+[permalinks]
+sci-tech                 = &quot;:year/:month/:day/:slug/&quot;
+essay                     = &quot;:year/:month/:day/:slug/&quot;
+
+[taxonomies]
+  tag                      = &quot;tags&quot;
+  series                   = &quot;series&quot;
+  category                 = &quot;categories&quot;
+
+
+[menu]
+  [[menu.main]]
+    name                   = &quot;Sci-Tech&quot;
+    weight                 = 1
+    identifier             = &quot;sci-tech&quot;
+    url                    = &quot;sci-tech/&quot;
+
+  [[menu.main]]
+    name                   = &quot;Essay&quot;
+    weight                 = 3
+    identifier             = &quot;essay&quot;
+    url                    = &quot;essay/&quot;
+
+  [[menu.main]]
+    name                   = &quot;About&quot;
+    weight                 = 9
+    identifier             = &quot;about&quot;
+    url                    = &quot;about/&quot;
+
+[params]
+  faviconfile              = &quot;img/logo.jpg&quot;
+  avatar                   = &quot;img/me.jpg&quot;             # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+  author                   = &quot;Xin Zhang&quot;
+  description              = [&quot;Life is a dream,&quot;, &quot;Dream is a life.&quot;]           # appears in the site header when set to a non-empty string
+  welcome_head             = &quot;Hello, Dreambooker!&quot;
+  welcome_word             = &quot;~ Chase your dream ~&quot;
+
+  latestpostscount         = 5                             # how many posts to display on the home page
+  bloggroupby              = 'month'
+  dateform                 = &quot;Jan 2, 2006&quot;
+  dateformfull             = &quot;2006-01-02  Monday  15:04:05&quot;
+  noshowreadtime           = false
+
+  # slides
+  slidesDirPath            = &quot;static/img/header-slides&quot;    # path to image in local dir (for hugo)
+  slidesDirPathURL         = &quot;img/header-slides&quot;    # path to image in static dir (for static pages)
+
+  # highlighting 
+  highlightjs              = true
+
+  # links
+  email                    = &quot;xinzhang1215@gmail.com&quot;
+  github                   = &quot;//github.com/zxdawn&quot;
+  twitter                  = &quot;//twitter.com/zhangxin_dawn&quot;
+  instagram                = &quot;//instagram.com/zhangxin_dawn/&quot;
+  include_rss              = true                         # include RSS &lt;link&gt; tag in &lt;head&gt; and show RSS icon
+
+
+  # analytics
+  # googleAnalytics          = &quot;UA-90057853-1&quot;
+
+  # counter
+  busuanzi                 = true
+
+  firstName = &quot;Xin&quot;
+  lastName = &quot;Zhang&quot;
+  address = &quot;Nanjing, CN&quot;
+  phone = &quot;+86 15895938361&quot;
+  contactNote = &quot;Mr.&quot;
+  profileImage = &quot;img/portrait.jpg&quot;
+  favicon = &quot;images/favicon.ico&quot;
+
+  showSkills = true
+  showProjects = false
+  showOpenSource = true
+  showPublications = true
+  showExperience = false
+  showEducation = true
+  showQr = true
+
+[params.staticman]
+  username = &quot;zxdawn2&quot;
+  repository = &quot;zxdawn2.github.io&quot;
+  branch = &quot;source&quot;
+  notifications = true
+
+[[params.handles]]
+    name = &quot;GitHub&quot;
+    link = &quot;https://github.com/zxdawn/&quot;
+
+[[params.handles]]
+    name = &quot;Twitter&quot;
+    link = &quot;https://twitter.com/zhangxin_dawn/&quot;
+
+[[params.handles]]
+    name = &quot;Youtube&quot;
+    link = &quot;https://www.youtube.com/channel/UC2y2YOGOWZXmOKzR1h_8wGw&quot;
+
+[[params.handles]]
+    name = &quot;Instagram&quot;
+    link = &quot;https://www.instagram.com/zhangxin_dawn/&quot;
+
+[[params.handles]]
+    name = &quot;Facebook&quot;
+    link = &quot;https://www.facebook.com/zxdawn&quot;
+</code></pre>
+
+<p>Then, put your image files under <code>/static/img</code> folder.</p>
+
+<p>Create <code>about</code>, <code>essay</code>, <code>sci-tech</code> directories under <code>/content</code> and add contents.</p>
+
+<p>To check the effect, just run <code>hugo server</code> and open <code>http://localhost:1313/</code> in browser.</p>
+
+<h2 id="create-repository">Create repository</h2>
+
+<p>Starting from here there are two possible ways:</p>
+
+<ol>
+<li>to use one repository for sources (hugo repository) and publishing (generated HTML)</li>
+<li>to use two repositories: one for sources and another for publishing</li>
+</ol>
+
+<p>I prefer the first option which needs only one repository and create the empty <code>&lt;user/org name&gt;.github.io</code> repository without README file. I create a new account named <code>zxdawn2</code> for this purpose. So, the corresponding repository name should be <code>zxdawn2.github.io</code>:</p>
+
+<p><img src="https://zxdawn2.github.io/images/sci-tech/2019-08/Hugo_Staticman_Travis_1.png" alt="repository" /></p>
+
+<p>Two branches will be created: <code>master</code> and <code>code</code>.</p>
+
+<ul>
+<li><code>master</code> branch will be used for hosting of generated HTML</li>
+<li><code>code</code> branch will be used as the sources of my page</li>
+</ul>
+
+<p>Here&rsquo;re all steps to set these branches:</p>
+
+<h3 id="branch-source">Branch source</h3>
+
+<pre><code># Initialized empty Git repository
+$ git init
+
+# Create new branch named source
+$ git checkout -b source
+
+# Exclude the `public` directory which is deployed to `master` branch
+$ echo '/public/' &gt;&gt; .gitignore
+
+# Add themes correctly
+$ git rm --cached themes/AlliOne
+$ git rm --cached themes/resume
+$ git commit -m &quot;remove submodule&quot;
+$ git add themes/AllinOne/
+$ git add themes/resume/
+$ git commit -m &quot;added codebase&quot;
+
+# Commit all source codes to `source` branch
+$ git add .
+$ git commit -m &quot;Hugo generator source code&quot;
+$ git remote add origin git@github.com:zxdawn2/zxdawn2.github.io.git
+$ git push -u origin source
+</code></pre>
+
+<h3 id="branch-master">Branch master</h3>
+
+<pre><code># Generate codes of website
+$ hugo
+
+# Copy contents to temporary directory
+$ HUGO_TEMP_DIR=$(mktemp -d)
+$ cp -R public/* &quot;$HUGO_TEMP_DIR&quot;
+
+# Create `master` branch
+$ git checkout --orphan master
+
+# Remove unnecessary contents
+$ rm .git/index
+$ git clean -fdx
+$ echo '/themes/' &gt;&gt; .gitignore
+
+# Copy files of website
+$ cp -R &quot;$HUGO_TEMP_DIR&quot;/. .
+
+# Commits
+$ git add .
+$ git commit -m 'initial website content'
+$ git push -u origin master
+
+$ [[ -d &quot;$HUGO_TEMP_DIR&quot; ]] &amp;&amp; rm -rf &quot;$HUGO_TEMP_DIR&quot;
+</code></pre>
+
+<p>It&rsquo;s time to check whether the website works in browser: <code>https://zxdawn2.github.io/</code>.</p>
+
+<p>If you got <code>404</code> error, you need to initialize the <code>README</code> file of <code>master</code> branch.</p>
+
+<h2 id="travis-ci">Travis CI</h2>
+
+<p>There&rsquo;re two possible ways:</p>
+
+<ol>
+<li>To use Github token;</li>
+<li>To use HTTPS for custom domains</li>
+</ol>
+
+<p>I prefer the second method which is simpler and easier.</p>
+
+<h3 id="add-variable-to-travis">Add variable to Travis</h3>
+
+<p>Now that we need to set a private variable name <code>GITHUB_AUTH_SECRET</code> on Travis:</p>
+
+<p>(update the placeholders with your data)</p>
+
+<pre><code>Name  = GITHUB_AUTH_SECRET
+Value = https://&lt;GITHUB USERNAME&gt;:&lt;GITHUB PASSWORD&gt;@github.com
+</code></pre>
+
+<p><img src="https://zxdawn2.github.io/images/sci-tech/2019-08/Hugo_Staticman_Travis_2.png" alt="variable" /></p>
+
+<h3 id="travis-yml">.travis.yml</h3>
+
+<p>Switch to <code>source</code> branch, write the script below into file <code>.travis.yml</code>:</p>
+
+<pre><code>---
+install:
+  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.deb
+  - sudo dpkg -i /tmp/hugo.deb
+
+script:
+  - hugo
+
+deploy:
+  - provider: script
+    script: chmod +x ./deploy.sh &amp;&amp; ./deploy.sh
+    skip_cleanup: true
+    on:
+      branch: source # or master if you are using the two-repository approach
+</code></pre>
+
+<h3 id="deploy-sh">deploy.sh</h3>
+
+<p>Create corresponding <code>deploy.sh</code>:</p>
+
+<pre><code>#!/bin/bash
+
+set -e
+
+echo $GITHUB_AUTH_SECRET &gt; ~/.git-credentials &amp;&amp; chmod 0600 ~/.git-credentials
+git config --global credential.helper store
+git config --global user.email &quot;&lt;USERNAME&gt;@users.noreply.github.com&quot;
+git config --global user.name &quot;&lt;USERNAME&gt;&quot;
+git config --global push.default simple
+
+rm -rf deployment
+git clone -b master https://github.com/&lt;GITHUB HTTPS PATH TO YOUR PUBLISHING REPO&gt; deployment
+rsync -av --delete --exclude &quot;.git&quot; public/ deployment
+cd deployment
+git add -A
+# we need the || true, as sometimes you do not have any content changes
+# and git woundn't commit and you don't want to break the CI because of that
+git commit -m &quot;rebuilding site on `date`, commit ${TRAVIS_COMMIT} and job ${TRAVIS_JOB_NUMBER}&quot; || true
+git push
+
+cd ..
+rm -rf deployment
+</code></pre>
+
+<p>Push both of them to the <code>source</code> branch of remote repository.</p>
+
+<pre><code>$ git add .
+$ git commit -m &quot;add travis&quot;
+$ git push
+</code></pre>
+
+<h2 id="staticman">Staticman</h2>
+
+<p>Add <code>staticman.yml</code> under root directory and add <code>@staticmanlab</code> to the collaborator on github:</p>
+
+<p><img src="https://zxdawn2.github.io/images/sci-tech/2019-08/Hugo_Staticman_Travis_3.png" alt="variable" /></p>
+
+<p>Access the link below to accept the invitation:</p>
+
+<p><a href="https://staticman3.herokuapp.com/v3/connect/github/zxdawn2/zxdawn2.github.io/">https://staticman3.herokuapp.com/v3/connect/github/zxdawn2/zxdawn2.github.io/</a></p>
+
+<p>You will see <code>OK!</code> on that page.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+<li><a href="https://axdlog.com/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/">Using Hugo and Travis CI To Deploy Blog To Github Pages Automatically</a></li>
+<li><a href="https://www.sidorenko.io/post/2018/12/hugo-on-github-pages-with-travis-ci/">Hugo on GitHub Pages with Travis CI</a></li>
+<li><a href="https://networkhobo.com/2017/12/30/hugo-staticman-nested-replies-and-e-mail-notifications/">Hugo + Staticman</a></li>
+<li><a href="https://jameskiefer.com/posts/threaded-comments-for-hugo-with-staticman-v3/">Threaded comments for Hugo with Staticman v3</a></li>
+</ol>
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://zxdawn2.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://zxdawn2.github.io/tags/hugo" role="button">hugo </a></li>
+      
+    
+      <li><a href="https://zxdawn2.github.io/tags/web" role="button">web </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+        <section id="comments">
+  <hr/>
+  
+  
+
+  
+    <h3>Comments (5)</h3>
+  
+
+  
+  
+    
+    
+      
+      
+      
+      <article>
+        <header class="comment-header">
+          <figure class="frame comment-avatar">
+            <img src="https://www.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0?s=70">
+          </figure>
+          <p class="comment-info"><strong>Test</strong><br><small>Tuesday, Jul 9, 2019</small></p>
+        </header>
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        <div id="39b6e5fb-ac32-46ca-a88c-f86286a18b77" class="comment-thread">
+          <blockquote class="comment">
+            <p>Test comment</p>
+
+<p>Wow!</p>
+
+          </blockquote>
+
+          
+            <div class="comment-reply-button">
+              <input id="39b6e5fb-ac32-46ca-a88c-f86286a18b77" type="button" class="right" value="Reply to Test" onclick="replyTo('39b6e5fb-ac32-46ca-a88c-f86286a18b77', 'Test')" />
+            </div>
+          
+
+          <div style="clear: both;"></div>
+
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+
+          
+        </div>
+      </article>
+
+    
+  
+    
+    
+      
+      
+      
+      <article>
+        <header class="comment-header">
+          <figure class="frame comment-avatar">
+            <img src="https://www.gravatar.com/avatar/8dc0f26bcc80769c2e9117e17c12a212?s=70">
+          </figure>
+          <p class="comment-info"><strong>Xin Zhang</strong><br><small>Thursday, Jul 11, 2019</small></p>
+        </header>
+
+        
+          
+        
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+
+        <div id="4889b260-a3e6-11e9-b01a-b73b26895bcd" class="comment-thread">
+          <blockquote class="comment">
+            Test comment
+          </blockquote>
+
+          
+
+          <div style="clear: both;"></div>
+
+          
+            
+          
+            
+          
+            
+                <article class="comment-reply">
+                  <header class="comment-header">
+                    <figure class="frame comment-avatar">
+                      <img class="comment-avatar" src="https://www.gravatar.com/avatar/8dc0f26bcc80769c2e9117e17c12a212?s=70">
+                    </figure>
+                    <p class="comment-info"><strong>Xin Zhang</strong><br><i><small>In reply to Xin Zhang</i><br>Saturday, Jul 13, 2019</small></p>
+                  </header>
+                  <blockquote class="comment">
+                    Test reply :)
+                  </blockquote>
+                </article>
+            
+          
+            
+          
+            
+          
+
+          
+            <div class="comment-reply-button-reply">
+              <input type="button" class="right" value="Reply to Thread" onclick="replyTo('4889b260-a3e6-11e9-b01a-b73b26895bcd', 'Xin Zhang')" />
+            </div>
+            <div style="clear: both;"></div>
+          
+        </div>
+      </article>
+
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      <article>
+        <header class="comment-header">
+          <figure class="frame comment-avatar">
+            <img src="https://www.gravatar.com/avatar/8dc0f26bcc80769c2e9117e17c12a212?s=70">
+          </figure>
+          <p class="comment-info"><strong>Xin Zhang</strong><br><small>Saturday, Jul 13, 2019</small></p>
+        </header>
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+
+        <div id="56c7ad00-a53f-11e9-8d9a-a35c7799e58f" class="comment-thread">
+          <blockquote class="comment">
+            Test notification
+          </blockquote>
+
+          
+
+          <div style="clear: both;"></div>
+
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+                <article class="comment-reply">
+                  <header class="comment-header">
+                    <figure class="frame comment-avatar">
+                      <img class="comment-avatar" src="https://www.gravatar.com/avatar/8dc0f26bcc80769c2e9117e17c12a212?s=70">
+                    </figure>
+                    <p class="comment-info"><strong>Xin Zhang</strong><br><i><small>In reply to Xin Zhang</i><br>Saturday, Jul 13, 2019</small></p>
+                  </header>
+                  <blockquote class="comment">
+                    Test reply to notification
+                  </blockquote>
+                </article>
+            
+          
+
+          
+            <div class="comment-reply-button-reply">
+              <input type="button" class="right" value="Reply to Thread" onclick="replyTo('56c7ad00-a53f-11e9-8d9a-a35c7799e58f', 'Xin Zhang')" />
+            </div>
+            <div style="clear: both;"></div>
+          
+        </div>
+      </article>
+
+    
+  
+    
+    
+  
+
+  
+<div id="comment-form">
+  <h3 id="comment-form-header">Say something</h3>
+  <form method="POST" action="https://staticman3.herokuapp.com/v3/entry/github/zxdawn2/zxdawn2.github.io/source/comments">
+    <input type="hidden" name="options[redirect]" value="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/#comment-submitted">
+    <input type="hidden" name="options[redirectError]" value="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/#comment-error">
+    <input type="hidden" name="options[slug]" value="Hugo_Staticman_Travis">
+    <input type="hidden" name="options[section]" value="sci-tech">
+    <input type="hidden" name="options[origin]" value="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/">
+    <input type="hidden" name="options[parent]" value="Hugo_Staticman_Travis">
+    <input type="hidden" name="fields[reply_to]" value="">
+    <input type="address" name="fields[botpot]" placeholder="botpot (do not fill!)" style="display:none">
+    
+
+    <fieldset>
+      <input name="fields[name]" type="text" placeholder="Your name">
+    </fieldset>
+
+    <fieldset>
+      <input name="fields[email]" type="email" placeholder="Your email address">
+    </fieldset>
+
+    <fieldset>
+      <textarea name="fields[body]" placeholder="You can use Markdown syntax" rows="10"></textarea>
+    </fieldset>
+
+
+
+    <fieldset>
+      
+
+      <input type="submit" value="Submit" id="submit-button" class="right">
+      <input type="reset" value="Reset" class="right">
+    </fieldset>
+
+  </form>
+</div>
+
+
+
+<div id="comment-submitted" class="dialog">
+  <h3>Thank you</h3>
+  <p>Your comment has been submitted and will be published once it has been approved.</p>
+  
+</div>
+
+<div id="comment-error" class="dialog">
+  <h3>OOPS!</h3>
+  <p>Your comment has not been submitted. Please <a href="https://zxdawn2.github.io/2019/08/17/hugo-staticman-travis/">go back</a> and try again. Thank You!</p>
+  <p>If this error persists, please open an issue by <a href="https://github.com/zxdawn2/zxdawn2.github.io/issues"> clicking here</a>.</p>
+</div>
+</section>
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#prerequisites">
+												 Prerequisites
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#create-basic-site">
+												 Create Basic Site
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#create-repository">
+												 Create repository
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#branch-source">
+												 Branch source
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#branch-master">
+												 Branch master
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#travis-ci">
+												 Travis CI
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#add-variable-to-travis">
+												 Add variable to Travis
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#travis-yml">
+												 .travis.yml
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#deploy-sh">
+												 deploy.sh
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#staticman">
+												 Staticman
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#reference">
+												 Reference
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/zxdawn " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+
+    
+
+    
+
+    
+        <a href="//twitter.com/zhangxin_dawn" target="_blank" rel="noopener"><i class="fab fa-twitter mr-3" aria-hidden="true"></i></a>
+    
+
+    
+        <a href="//instagram.com/zhangxin_dawn/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:xinzhang1215@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2019 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+
+  
+  
+    | UV: <span id="busuanzi_value_site_uv"></span> | PV: <span id="busuanzi_value_site_pv"></span>
+  
+  
+
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://zxdawn2.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://zxdawn2.github.io/js/main.js"></script>
+
+
+
+  
+  <script src="https://zxdawn2.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  </body>
+</html>
