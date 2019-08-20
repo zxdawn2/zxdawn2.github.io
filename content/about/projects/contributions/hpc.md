@@ -1,6 +1,6 @@
 {
     "title":"HPC website",
-    "image":"/img/hpc.jpeg",
+    "image":"/img/hpc.jpg",
     "link": "https://hpc-nuist-ap.github.io/",
     "description":"The website of our school's HPC.",
     "featured":true,

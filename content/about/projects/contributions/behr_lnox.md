@@ -1,6 +1,6 @@
 {
     "title":"BEHR_LNOx",
-    "image":"/img/behr_lnox.jpeg",
+    "image":"/img/behr_lnox.jpg",
     "link": "https://github.com/zxdawn/BEHR-LNOx",
     "description":" Codes of my paper about estimating LNOx from OMI.",
     "featured":true,
