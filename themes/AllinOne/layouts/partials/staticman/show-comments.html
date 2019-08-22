@@ -15,7 +15,7 @@
       <article>
         <header class="comment-header">
           <figure class="frame comment-avatar">
-            <img src="https://www.gravatar.com/avatar/{{ .email }}?s=70">
+            <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=70">
           </figure>
           <p class="comment-info"><strong>{{ .name }}</strong><br><small>{{ dateFormat "Monday, Jan 2, 2006" .date }}</small></p>
         </header>
@@ -48,9 +48,9 @@
                     </figure>
                     <p class="comment-info"><strong>{{ .name }}</strong><br><i><small>In reply to {{ $parentName }}</i><br>{{ dateFormat "Monday, Jan 2, 2006" .date }}</small></p>
                   </header>
-                  <blockquote class="comment">
+                  <div class="comment">
                     {{ .body | markdownify }}
-                  </blockquote>
+                  </div>
                 </article>
             {{ end }}
           {{ end }}
