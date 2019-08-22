@@ -115,6 +115,7 @@ essay                     = ":year/:month/:day/:slug/"
   showQr = true
 
 [params.staticman]
+  endpoint = "https://dreambooker-staticman.herokuapp.com/v2/entry"
   username = "zxdawn2"
   repository = "zxdawn2.github.io"
   branch = "source"
