@@ -1231,9 +1231,11 @@ input[type=submit], input[type=reset], input[type=button]
   }
 }
 
-input[type="checkbox"]
+input[type='checkbox']
 {
-    vertical-align:middle;
+  float: left;
+  width: 20px;
+  margin-right: 8px;
 }
 
 input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover{
