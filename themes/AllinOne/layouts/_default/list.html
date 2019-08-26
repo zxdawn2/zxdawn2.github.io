@@ -43,10 +43,15 @@
             {{ template "_internal/pagination.html" . }}
           </div>
 
+          {{ $paginator := .Paginate .Data.Pages.ByPublishDate.Reverse }}
+
           {{ range $paginator.Pages }}
               {{ partial "post-card.html" . }}
           {{ end }}
-            
+
+          <div class="pagination pagination-outline justify-content-end active-color">
+              {{ template "_internal/pagination.html" . }}
+          </div>
         </div>
       </div>
       <!-- /.Post list -->
